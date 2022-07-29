@@ -9,7 +9,11 @@ const MovieItem = ({ movie, state }) => {
     <>
       <li>
         <Link
-          to={location.pathname === '/' ? `movies/${movie.id}` : `${movie.id}`}
+          to={
+            location.pathname === '/goit-react-hw-05-movies/'
+              ? `movies/${movie.id}`
+              : `${movie.id}`
+          }
           state={{ from: state }}
         >
           <Card>
