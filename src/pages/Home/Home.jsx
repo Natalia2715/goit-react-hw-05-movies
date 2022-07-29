@@ -27,7 +27,6 @@ const Home = () => {
       <Title>Trending today</Title>
       {<MovieList movies={movies} />}
       {isLoading && <Loader />}
-      <div>test</div>
       <Outlet />
       <ToastContainer autoClose={3000} />
     </main>
