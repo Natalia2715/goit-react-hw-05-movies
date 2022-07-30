@@ -12,7 +12,7 @@ const MovieDetails = () => {
 
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/goit-react-hw-05-movies/';
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     setIsLoading(true);
