@@ -8,7 +8,7 @@ import { useSearchParams } from 'react-router-dom';
 
 const Searchbar = ({ onSubmit, searchQuery }) => {
   const [value, setValue] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [setSearchParams] = useSearchParams();
   useEffect(() => {
     if (!searchQuery) {
       return;
