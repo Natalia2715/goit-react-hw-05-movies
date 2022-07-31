@@ -4,11 +4,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import 'react-toastify/dist/ReactToastify.css';
 import { ReactComponent as SearchIcon } from '../../images/SearchIcon.svg';
-import { useSearchParams } from 'react-router-dom';
 
-const Searchbar = ({ onSubmit, searchQuery }) => {
+const Searchbar = ({ onSubmit, searchQuery, setSearchParams }) => {
   const [value, setValue] = useState('');
-  const [setSearchParams] = useSearchParams();
   useEffect(() => {
     if (!searchQuery) {
       return;
