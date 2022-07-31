@@ -11,7 +11,7 @@ import {
   AddBox,
 } from './MovieCard.styled';
 
-const MovieCard = ({ data }) => {
+const MovieCard = ({ data, state }) => {
   const loadAddInfo = () => {
     scrollSpy.update();
     scroll.scrollTo('700');
@@ -43,12 +43,12 @@ const MovieCard = ({ data }) => {
         <AddTitle>Additional information</AddTitle>
         <AddList>
           <li>
-            <AddLink to="cast" onClick={loadAddInfo}>
+            <AddLink to="cast" onClick={loadAddInfo} state={{ from: state }}>
               Cast
             </AddLink>
           </li>
           <li>
-            <AddLink to="reviews" onClick={loadAddInfo}>
+            <AddLink to="reviews" onClick={loadAddInfo} state={{ from: state }}>
               Reviews
             </AddLink>
           </li>

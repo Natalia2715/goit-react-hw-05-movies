@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
 import Loader from './Loader/Loader';
@@ -9,8 +9,8 @@ const Movies = lazy(() => import('../pages/Movies/Movies.jsx'));
 const MovieDetails = lazy(() =>
   import('../pages/MovieDetails/MovieDetails.jsx')
 );
-const Cast = lazy(() => import('./Cast/Cast.jsx'));
-const Reviews = lazy(() => import('./Reviews/Reviews.jsx'));
+const Cast = lazy(() => import('../pages/Cast/Cast.jsx'));
+const Reviews = lazy(() => import('../pages/Reviews/Reviews.jsx'));
 
 export const App = () => {
   return (
@@ -24,7 +24,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="*" element={<Home />}></Route>
+          <Route path="*" element={<Navigate to="/" />}></Route>
         </Routes>
       </Suspense>
     </>

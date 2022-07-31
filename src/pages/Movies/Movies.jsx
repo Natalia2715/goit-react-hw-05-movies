@@ -48,7 +48,11 @@ const Movies = () => {
       {error && toast.error(`Something went wrong! ${error.message}`)}
 
       <Outlet />
-      <Searchbar setSearchParams={setSearchParams} onSubmit={handleSubmit} />
+      <Searchbar
+        setSearchParams={setSearchParams}
+        onSubmit={handleSubmit}
+        searchQuery={searchQuery}
+      />
       {isLoading && <Loader />}
       {searchedMovies <= 0 ? (
         <FindMovie />

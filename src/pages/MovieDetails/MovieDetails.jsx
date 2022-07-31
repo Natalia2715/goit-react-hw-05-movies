@@ -29,7 +29,7 @@ const MovieDetails = () => {
       <GoBackButton to={backLinkHref}>Go Back</GoBackButton>
       {error && toast.error(`Something went wrong! ${error.message}`)}
       {isLoading && <Loader />}
-      <MovieCard data={data} />
+      <MovieCard data={data} state={backLinkHref} />
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>

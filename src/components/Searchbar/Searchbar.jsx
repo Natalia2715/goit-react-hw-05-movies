@@ -1,26 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SearchbarEl, Form, Button, Input } from './Searchbar.styled';
 import { ToastContainer, toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import 'react-toastify/dist/ReactToastify.css';
 import { ReactComponent as SearchIcon } from '../../images/SearchIcon.svg';
+import { useSearchParams } from 'react-router-dom';
 
-const Searchbar = ({ setSearchParams, onSubmit }) => {
-  const [query, setQuery] = useState('');
-
+const Searchbar = ({ onSubmit, searchQuery }) => {
+  const [value, setValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    if (!searchQuery) {
+      return;
+    }
+    setValue(searchQuery);
+  }, [searchQuery]);
   const handleChange = event => {
-    setQuery(event.currentTarget.value.toLowerCase());
+    setValue(event.currentTarget.value.toLowerCase());
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (query.trim() === '') {
+    if (value.trim() === '') {
       toast.error('you have nothing written yet');
       return;
     }
-    const queryString = query.trim().split(' ').join('+');
+    const queryString = value.trim().split(' ').join('+');
     setSearchParams({ query: queryString });
-    onSubmit(query);
+    onSubmit(value);
   };
 
   return (
@@ -32,7 +39,7 @@ const Searchbar = ({ setSearchParams, onSubmit }) => {
             {/* <span>Search</span> */}
           </Button>
 
-          <Input onChange={handleChange} type="text" autoFocus value={query} />
+          <Input onChange={handleChange} value={value} type="text" autoFocus />
         </Form>
       </SearchbarEl>
       <ToastContainer autoClose={3000} />
